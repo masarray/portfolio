@@ -1,0 +1,44 @@
+name: Landing Release Link Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/portfolio.ts'
+      - 'src/components/desktop/AppContent.tsx'
+      - 'src/styles.css'
+      - '.github/workflows/landing-release-check.yml'
+  pull_request:
+    paths:
+      - 'src/data/portfolio.ts'
+      - 'src/components/desktop/AppContent.tsx'
+      - 'src/styles.css'
+      - '.github/workflows/landing-release-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portfolio-build:
+    name: Build portfolio with pinned public process-bus release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Verify M3.H current release and portable evidence links
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -Fq 'ARStack Process Bus Simulator' src/data/portfolio.ts
+          grep -Fq 'processbus-sim-m3h-20261024' src/data/portfolio.ts
+          grep -Fq 'https://masarray.github.io/arstack61850/' src/data/portfolio.ts
+          grep -Fq 'project.releaseUrl' src/components/desktop/AppContent.tsx
+          grep -Fq 'rel="noopener noreferrer"' src/components/desktop/AppContent.tsx
+      - name: Install locked dependencies
+        run: bun install --frozen-lockfile
+      - name: Compile portfolio landing
+        run: bun run build
