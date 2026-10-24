@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   portfolio-build:
-    name: Build portfolio with pinned public process-bus release
+    name: Build portfolio with latest stable process-bus release link
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -29,12 +29,13 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
-      - name: Verify M3.H current release and portable evidence links
+      - name: Verify latest release link and historical M3.H benchmark
         shell: bash
         run: |
           set -euo pipefail
           grep -Fq 'ARStack Process Bus Simulator' src/data/portfolio.ts
-          grep -Fq 'processbus-sim-m3h-20261024' src/data/portfolio.ts
+          grep -Fq 'https://github.com/masarray/arstack61850/releases/latest' src/data/portfolio.ts
+          grep -Fq 'M3.H reference benchmark' src/data/portfolio.ts
           grep -Fq 'https://masarray.github.io/arstack61850/' src/data/portfolio.ts
           grep -Fq 'project.releaseUrl' src/components/desktop/AppContent.tsx
           grep -Fq 'rel="noopener noreferrer"' src/components/desktop/AppContent.tsx
