@@ -18,11 +18,11 @@ export const projects = [
     title: 'ARStack Process Bus Simulator',
     badge: 'Public Stable · M3.H',
     description:
-      'Released 24 October 2026: Windows Studio + ESP32-P4 4I+4V Sampled Values at 4 kHz and simulated Global PTP Grandmaster with hardware TX timestamps. Ethernet FAT: 163,048 SV frames across 40.76 seconds, 100% smpSynch=2, 0 missing/duplicate; real relay compatibility not yet tested.',
-    status: 'Public Stable lab simulator release',
+      'M3.H reference benchmark (24 October 2026): Windows Studio + ESP32-P4 4I+4V Sampled Values at 4 kHz and simulated Global PTP Grandmaster with hardware TX timestamps. Ethernet FAT: 163,048 SV frames across 40.76 seconds, 100% smpSynch=2, 0 missing/duplicate; real relay compatibility not yet tested.',
+    status: 'Open-source process-bus engineering lab',
     stack: ['IEC 61850 SV', 'PTP IEEE 1588', 'ESP32-P4', 'Qt / C++', 'Hardware timestamps'],
     websiteUrl: 'https://masarray.github.io/arstack61850/',
-    releaseUrl: 'https://github.com/masarray/arstack61850/releases/tag/processbus-sim-m3h-20261024',
+    releaseUrl: 'https://github.com/masarray/arstack61850/releases/latest',
     sourceUrl: 'https://github.com/masarray/arstack61850'
   },
   {
