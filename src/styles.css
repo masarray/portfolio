@@ -603,3 +603,9 @@ body:has(.desktop-root) {
   .home-stage p { font-size: 17px; }
 }
 @media (max-width: 860px) { .window-layer { inset: 36px 0 84px 0; } }
+
+/* Published engineering project actions; keep links legible on mobile. */
+.project-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.project-links a, .repo-release { display: inline-flex; align-items: center; min-height: 34px; color: #94e8ff; border: 1px solid rgba(122,217,244,.24); border-radius: 9px; padding: 7px 11px; font-size: 12px; font-weight: 750; text-decoration: none; }
+.project-links a:hover, .repo-release:hover { background: rgba(97,198,239,.1); border-color: #77d7f4; }
+.repo-release { margin-top: 12px; }
