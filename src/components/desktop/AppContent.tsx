@@ -15,6 +15,13 @@ function ProjectGrid({ projects }) {
           <div className="stack-row">
             {project.stack.map((item) => <span key={item}>{item}</span>)}
           </div>
+          {project.releaseUrl && (
+            <div className="project-links">
+              <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer">Product page ↗</a>
+              <a href={project.releaseUrl} target="_blank" rel="noopener noreferrer">Download M3.H ↗</a>
+              <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer">Source ↗</a>
+            </div>
+          )}
         </article>
       ))}
     </div>
@@ -90,7 +97,7 @@ function TerminalApp({ owner }) {
     output.push(`ari@portfolio ~ % ${value}`);
     if (command === 'help') output.push('Available: skills, projects, contact, clear');
     else if (command === 'skills') output.push('SCADA, IEC 61850, GOOSE, SV, DNP3, IEC 104, Modbus, WPF, React, AI tooling, audio system tuning.');
-    else if (command === 'projects') output.push('IEC 61850 RAW Analyzer | QC NCR AI Suite | DNP3/IEC104 Test Tools | SoundFitEQ');
+    else if (command === 'projects') output.push('ARStack Process Bus Simulator M3.H [PUBLIC] | IEC 61850 RAW Analyzer | QC NCR AI Suite | DNP3/IEC104 Tools | SoundFitEQ');
     else if (command === 'contact') output.push(`${owner.email}`);
     else if (command === 'clear') {
       setLines([]);
@@ -130,6 +137,7 @@ function GithubApp({ projects }) {
             <div>
               <h3>{project.title.replaceAll(' ', '-').toLowerCase()}</h3>
               <p>{project.description}</p>
+              {project.releaseUrl && <a href={project.releaseUrl} target="_blank" rel="noopener noreferrer" className="repo-release">Official M3.H release ↗</a>}
             </div>
             <span>{project.badge}</span>
           </article>
